@@ -4,7 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_firebase_auth/repositories/auth_repository.dart';
 
-final authControllerProvider = StateNotifierProvider<AuthController, User?>(
+final authControllerProvider =
+    StateNotifierProvider.autoDispose<AuthController, User?>(
   (ref) => AuthController(ref.read),
 );
 

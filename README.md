@@ -1,6 +1,9 @@
 # riverpod_firebase_auth
 
-A new Flutter project.
+Flutterのアプリケーション開発 Riverpodを使ってFirebase Authを用いた認証を実装
+現状、Androidのみ対応
+
+
 
 ## Getting Started
 
