@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "573056702693",
+    "project_id": "riverpod-firebase-auth",
+    "storage_bucket": "riverpod-firebase-auth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:573056702693:android:277c70ef5cad1e80231c0c",
+        "android_client_info": {
+          "package_name": "com.example.riverpod_firebase_auth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "573056702693-tf7sddhqe4d1bndkmiad4ssjpvbjkbuq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFg04Q9LtyKEVu3vppTIYTjab52kyKw50"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "573056702693-tf7sddhqe4d1bndkmiad4ssjpvbjkbuq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "573056702693-lohudn1q12r2ood1amm6qr1ra56j8r2m.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "jp.susatthi.riverpodFirebaseAuth"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:573056702693:android:a55d0f11e3fc2b2d231c0c",
+        "android_client_info": {
+          "package_name": "com.ryotaiwamoto.riverpod_firebase_auth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "573056702693-tf7sddhqe4d1bndkmiad4ssjpvbjkbuq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFg04Q9LtyKEVu3vppTIYTjab52kyKw50"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "573056702693-tf7sddhqe4d1bndkmiad4ssjpvbjkbuq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "573056702693-lohudn1q12r2ood1amm6qr1ra56j8r2m.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "jp.susatthi.riverpodFirebaseAuth"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
