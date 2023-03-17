@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverpod_firebase_auth/utils/connectivity.dart';
 
 import '../../repositories/auth/auth_repository_impl.dart';
+import '../../utils/connectivity.dart';
 import '../../utils/exceptions/app_exception.dart';
 import '../../utils/extensions/firebase_auth_exception.dart';
 

@@ -23,6 +23,7 @@ extension FirebaseAuthExceptionEx on FirebaseAuthException {
   String get toEnglish {
     switch (code) {
       case 'network-request-failed':
+        // ignore: lines_longer_than_80_chars
         return 'A network error (such as timeout, interrupted connection or unreachable host) has occurred.';
       case 'weak-password':
         return 'The password is not strong enough.';

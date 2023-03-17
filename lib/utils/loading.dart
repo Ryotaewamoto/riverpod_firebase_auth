@@ -7,7 +7,7 @@ import 'constants/app_colors.dart';
 /// アプリ全体に半透明のローディング画面を重ねるかどうか。
 /// Whether to stack semi-transparent background
 final overlayLoadingProvider =
-    NotifierProvider<_LoadingNotifier, bool>(() => _LoadingNotifier());
+    NotifierProvider<_LoadingNotifier, bool>(_LoadingNotifier.new);
 
 class _LoadingNotifier extends Notifier<bool> {
   @override
