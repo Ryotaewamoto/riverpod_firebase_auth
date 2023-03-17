@@ -45,3 +45,9 @@ $ flutterfire configure \
 - Add tests
 - Migration [Go Router](https://pub.dev/packages/go_router)
 - Add localization (now only English)
+
+
+## Reference
+
+- https://github.com/KosukeSaigusa/spajam-2022-final
+- https://github.com/Ryotaewamoto/bad-log

@@ -10,7 +10,7 @@ class AppException implements Exception {
   });
 
   /// ステータスコードや独自のエラーコードなどのエラー種別を識別するための文字列
-  /// string of identifying Status code or original error code.
+  /// String of identifying Status code or original error code.
   final String? code;
 
   /// 例外の内容を説明するメッセージ

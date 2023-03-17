@@ -25,7 +25,6 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Stream<User?> authStateChanges() => _auth.authStateChanges();
 
-  /// ユーザー作成
   @override
   Future<String?> signUp({
     required String email,
@@ -39,7 +38,6 @@ class AuthRepositoryImpl implements AuthRepository {
     return userCredential.user?.uid;
   }
 
-  /// ログイン
   @override
   Future<void> signIn({
     required String email,
