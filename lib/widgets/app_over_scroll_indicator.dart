@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../utils/constants/app_colors.dart';
 
-/// Android の画面において、[SingleChildScrollView] を使用した際の引き伸ばしの
-/// エフェクトの色を変更するための [Widget]。
+/// In the case of Android, this [Widget] gives app colors to
+/// the effected of shrinking [SingleChildScrollView].
 class AppOverScrollIndicator extends StatelessWidget {
   const AppOverScrollIndicator({required this.child, super.key});
   final Widget child;
@@ -15,7 +15,7 @@ class AppOverScrollIndicator extends StatelessWidget {
       color: AppColors.secondary,
       child: NotificationListener<OverscrollIndicatorNotification>(
         onNotification: (OverscrollIndicatorNotification notification) {
-          notification.disallowIndicator(); // disallowGlow()を呼ぶ
+          notification.disallowIndicator(); // call disallowGlow().
           return false;
         },
         child: child,

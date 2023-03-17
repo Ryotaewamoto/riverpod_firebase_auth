@@ -13,7 +13,7 @@ class App extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp(
-      title: 'BadLog',
+      title: 'Riverpod Firebase Auth',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: FontFamily.helvetica,

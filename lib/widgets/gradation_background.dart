@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '/utils/constants/app_colors.dart';
 
-/// グラデーションをつけた背景の [Widget]
+/// Background [Widget] with linear gradation.
 class GradationBackground extends StatelessWidget {
   const GradationBackground({this.startPoint = 0.80, super.key});
 

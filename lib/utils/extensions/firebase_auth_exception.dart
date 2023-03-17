@@ -15,8 +15,27 @@ extension FirebaseAuthExceptionEx on FirebaseAuthException {
         return 'パスワードが正しくありません';
       case 'email-already-in-use':
         return 'メールアドレスがすでに使用されています。ログインするか別のメールアドレスで作成してください';
-      default: //想定外
+      default: // 想定外
         return 'エラー発生しました。通信環境がいい所で再度やり直してください。';
+    }
+  }
+
+  String get toEnglish {
+    switch (code) {
+      case 'network-request-failed':
+        return 'A network error (such as timeout, interrupted connection or unreachable host) has occurred.';
+      case 'weak-password':
+        return 'The password is not strong enough.';
+      case 'invalid-email':
+        return 'The email used is invalid.';
+      case 'user-not-found':
+        return 'There is no user corresponding to the given email.';
+      case 'wrong-password':
+        return 'The password is invalid for the given email.';
+      case 'email-already-in-use':
+        return 'There already exists an account with the given email address.';
+      default: // Unexpected error
+        return 'A error has occurred.';
     }
   }
 }

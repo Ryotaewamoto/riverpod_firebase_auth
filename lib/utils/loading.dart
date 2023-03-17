@@ -5,6 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'constants/app_colors.dart';
 
 /// アプリ全体に半透明のローディング画面を重ねるかどうか。
+/// Whether to stack semi-transparent background
 final overlayLoadingProvider =
     NotifierProvider<_LoadingNotifier, bool>(() => _LoadingNotifier());
 
@@ -17,7 +18,7 @@ class _LoadingNotifier extends Notifier<bool> {
   void endLoading() => state = false;
 }
 
-/// プライマリカラーの SpinkitCircle を表示する
+/// show a primary color's SpinkitCircle.
 class PrimarySpinkitCircle extends StatelessWidget {
   const PrimarySpinkitCircle({
     super.key,
@@ -34,7 +35,7 @@ class PrimarySpinkitCircle extends StatelessWidget {
   }
 }
 
-/// 二度押しを防止したいときなどの重ねるローディングウィジェット
+/// This [Widget] prevent app users to double tap.
 class OverlayLoadingWidget extends StatelessWidget {
   const OverlayLoadingWidget({
     super.key,

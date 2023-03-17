@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'constants/app_colors.dart';
 
-/// [Text] の引数 [TextStyle] に渡す文字のスタイル
+/// [Text] arguments,i.e., original [TextStyle].
 class TextStyles {
   const TextStyles();
 

@@ -8,13 +8,17 @@ import 'exceptions/app_exception.dart';
 /// [AsyncValue] の [error] には基本的に [AppException] が入る。そうでない場合、
 /// [_message] で [String] に変換する処理を行う。
 /// [AppException] でない場合はエラーハンドリングの漏れであるので注意。
+/// Basically [error] of [AsyncValue] will be [AppException].
+/// Otherwise the value is converted to [String].
+/// If the value is not [AppException], you maybe forget error handling.
+///
 extension AsyncValueErrorDialog on AsyncValue<void> {
   void showAlertDialogOnError(BuildContext context) {
     debugPrint('isLoading: $isLoading, hasError: $hasError');
     if (!isLoading && hasError) {
       showExceptionAlertDialog(
         context: context,
-        title: 'エラー',
+        title: 'Error',
         exception: error,
       );
     }

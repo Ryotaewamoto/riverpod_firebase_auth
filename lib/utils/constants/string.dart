@@ -1,6 +1,7 @@
 /// 利用規約
-const termsLink = 'https://www.kiyac.app/termsOfService/l0dqkYPGLMXaJt4rmNWL';
+/// Terms of service.
+const termsLink = '';
 
 /// プライバシー・ポリシー
-const privacyPolicyLink =
-    'https://www.kiyac.app/privacypolicy/sHdJXKmP10TCoQWGYCNU';
+/// Privacy policy
+const privacyPolicyLink = '';

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../utils/constants/app_colors.dart';
 import '../utils/text_styles.dart';
 
-/// アプリ内で使用する [AppBar]
+/// Original [AppBar].
 class WhiteAppBar extends StatelessWidget implements PreferredSizeWidget {
   const WhiteAppBar({
     super.key,

@@ -8,9 +8,9 @@ import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // 画面の向きを固定する。
+  // Fix device position.
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  // Firebase を初期化する。
+  // Initialize Firebase.
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(
     const ProviderScope(
