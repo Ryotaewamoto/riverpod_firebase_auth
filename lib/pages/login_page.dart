@@ -42,7 +42,7 @@ class LogInPage extends HookConsumerWidget {
               // ログインできたらスナックバーでメッセージを表示してホーム画面に遷移する
               ref
                   .read(scaffoldMessengerServiceProvider)
-                  .showSnackBar('ログインしました！');
+                  .showSnackBar('Logged in');
 
               await Navigator.of(context).push<void>(
                 MaterialPageRoute(

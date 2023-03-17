@@ -41,7 +41,7 @@ class SignUpPage extends HookConsumerWidget {
             // ログインできたらスナックバーでメッセージを表示してホーム画面に遷移する
             ref
                 .read(scaffoldMessengerServiceProvider)
-                .showSnackBar('アカウントを作成しました！');
+                .showSnackBar('Create new account!');
 
             await Navigator.of(context).push<void>(
               MaterialPageRoute(
