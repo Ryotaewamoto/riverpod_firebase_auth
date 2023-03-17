@@ -10,12 +10,14 @@ import 'home_page.dart';
 
 /// 注意：画面遷移に [MaterialPageRoute] を採用しているので、ローディング時に重ねる
 /// [OverlayLoadingWidget] は各画面で実装が必要である。
+/// Remark: If you choice [MaterialPageRoute] like this app,
+/// [OverlayLoadingWidget] will be necessary for some pages used loading.
+/// 
 class AuthPage extends HookConsumerWidget {
   const AuthPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // インターネットの接続が切れた際にスナックバーを表示
     ref.handleConnectivity();
 
     return Scaffold(

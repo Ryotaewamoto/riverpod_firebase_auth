@@ -19,6 +19,7 @@ class SignInController extends AutoDisposeAsyncNotifier<void> {
   @override
   FutureOr<void> build() {
     // FutureOr<void> より、初期の処理の必要がないため何もしない。
+    // Do nothing since the return type is void.
   }
 
   /// サインインする

@@ -19,6 +19,7 @@ class SendPasswordResetEmailController extends AutoDisposeAsyncNotifier<void> {
   @override
   FutureOr<void> build() {
     // FutureOr<void> より、初期の処理の必要がないため何もしない。
+    // Do nothing since the return type is void.
   }
 
   /// パスワードの再設定用のメールを送信する
