@@ -2,9 +2,8 @@
 
 Firebase Authentication with Flutter & Riverpod v2:
 
-| GetStarted |   SignUp   |   SignIn   |
-| :---: | :---: | :---: |
-| <img src="https://user-images.githubusercontent.com/75112184/225824797-0ca316b8-c7b3-4677-a35e-9561e0a82881.png" width=300px> | <img src="https://user-images.githubusercontent.com/75112184/225824776-71224ce5-9690-4e8f-8b01-268cf8697ccb.png" width=300px> | <img src="https://user-images.githubusercontent.com/75112184/225824789-277209e2-d086-43b7-bcb9-5779a1c0b2b7.png" width=300px> |
+
+| <img src="https://user-images.githubusercontent.com/75112184/225824797-0ca316b8-c7b3-4677-a35e-9561e0a82881.png" width=300> | <img src="https://user-images.githubusercontent.com/75112184/225824776-71224ce5-9690-4e8f-8b01-268cf8697ccb.png" width=300> | <img src="https://user-images.githubusercontent.com/75112184/225824789-277209e2-d086-43b7-bcb9-5779a1c0b2b7.png" width=300> |
 
 A new Flutter project.
 
