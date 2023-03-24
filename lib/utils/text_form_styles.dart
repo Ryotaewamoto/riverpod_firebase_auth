@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../features/notifiers/is_obscure_notifier.dart';
 import 'constants/app_colors.dart';
 
 /// [TextFormField] arguments, i.e., the form styles of [InputDecoration].
@@ -30,7 +31,8 @@ class AppTextFormStyles {
       );
 
   static InputDecoration onPassword({
-    required ValueNotifier<bool> isObscure,
+    required bool state,
+    required IsObscureNotifier notifier,
   }) =>
       InputDecoration(
         contentPadding: EdgeInsets.zero,
@@ -49,14 +51,14 @@ class AppTextFormStyles {
             color: AppColors.baseLight,
           ),
         ),
-        suffixIcon: isObscure.value
+        suffixIcon: state
             ? IconButton(
                 icon: const Icon(
                   Icons.visibility_off,
                   color: AppColors.baseLight,
                 ),
                 onPressed: () {
-                  isObscure.value = false;
+                  notifier.toUnobscured();
                 },
               )
             : IconButton(
@@ -65,7 +67,7 @@ class AppTextFormStyles {
                   color: AppColors.baseLight,
                 ),
                 onPressed: () {
-                  isObscure.value = true;
+                  notifier.toObscured();
                 },
               ),
       );

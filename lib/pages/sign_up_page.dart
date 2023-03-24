@@ -1,6 +1,5 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../features/auth/sign_up.dart';
@@ -17,8 +16,33 @@ import '../../widgets/gradation_background.dart';
 import '../../widgets/rounded_button.dart';
 import '../../widgets/text_form_header.dart';
 import '../../widgets/white_app_bar.dart';
+import '../features/notifiers/is_check_terms.dart';
+import '../features/notifiers/is_obscure_notifier.dart';
 import '../gen/assets.gen.dart';
 import 'home_page.dart';
+
+/// Provider
+
+final _nameEmailTextEditingController = Provider<TextEditingController>(
+  (_) => TextEditingController(),
+);
+final _emailTextEditingController = Provider<TextEditingController>(
+  (_) => TextEditingController(),
+);
+
+final _passwordTextEditingController = Provider<TextEditingController>(
+  (_) => TextEditingController(),
+);
+
+/// NotifierProvider
+
+final _isObscureProvider = NotifierProvider<IsObscureNotifier, bool>(
+  IsObscureNotifier.new,
+);
+
+final _isCheckTermsProvider = NotifierProvider<IsCheckTermsNotifier, bool>(
+  IsCheckTermsNotifier.new,
+);
 
 class SignUpPage extends HookConsumerWidget {
   const SignUpPage({super.key});
@@ -68,11 +92,13 @@ class SignUpPage extends HookConsumerWidget {
     final state = ref.watch(signUpControllerProvider);
 
     // Hooks
-    final isObscure = useState(true);
-    final isCheckTerms = useState(false);
-    final userNameController = useTextEditingController();
-    final emailController = useTextEditingController();
-    final passwordController = useTextEditingController();
+    final isCheckTermsState = ref.watch(_isCheckTermsProvider);
+    final isCheckTermsNotifier = ref.watch(_isCheckTermsProvider.notifier);
+    final isObscureState = ref.watch(_isObscureProvider);
+    final isObscureNotifier = ref.watch(_isObscureProvider.notifier);
+    final userNameController = ref.watch(_nameEmailTextEditingController);
+    final emailController = ref.watch(_emailTextEditingController);
+    final passwordController = ref.watch(_passwordTextEditingController);
 
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
@@ -108,11 +134,13 @@ class SignUpPage extends HookConsumerWidget {
                       Measure.g_16,
                       _PasswordTextForm(
                         controller: passwordController,
-                        isObscure: isObscure,
+                        isObscureState: isObscureState,
+                        notifier: isObscureNotifier,
                       ),
                       Measure.g_32,
                       _TermsAndPrivacyPolicyText(
-                        isCheckTerms: isCheckTerms,
+                        state: isCheckTermsState,
+                        notifier: isCheckTermsNotifier,
                       ),
                       Measure.g_32,
                       Padding(
@@ -126,7 +154,7 @@ class SignUpPage extends HookConsumerWidget {
                                   await ref
                                       .read(signUpControllerProvider.notifier)
                                       .signUp(
-                                        isCheckTerms: isCheckTerms.value,
+                                        isCheckTerms: isCheckTermsState,
                                         userName: userNameController.value.text,
                                         email: emailController.value.text,
                                         password: passwordController.value.text,
@@ -206,11 +234,13 @@ class _EmailTextForm extends StatelessWidget {
 class _PasswordTextForm extends StatelessWidget {
   const _PasswordTextForm({
     required this.controller,
-    required this.isObscure,
+    required this.isObscureState,
+    required this.notifier,
   });
 
   final TextEditingController controller;
-  final ValueNotifier<bool> isObscure;
+  final bool isObscureState;
+  final IsObscureNotifier notifier;
 
   @override
   Widget build(BuildContext context) {
@@ -221,10 +251,11 @@ class _PasswordTextForm extends StatelessWidget {
           const TextFormHeader(title: 'Password'),
           Measure.g_4,
           TextFormField(
-            obscureText: isObscure.value,
+            obscureText: isObscureState,
             controller: controller,
             decoration: AppTextFormStyles.onPassword(
-              isObscure: isObscure,
+              state: isObscureState,
+              notifier: notifier,
             ),
           ),
         ],
@@ -235,10 +266,12 @@ class _PasswordTextForm extends StatelessWidget {
 
 class _TermsAndPrivacyPolicyText extends HookConsumerWidget {
   const _TermsAndPrivacyPolicyText({
-    required this.isCheckTerms,
+    required this.state,
+    required this.notifier,
   });
 
-  final ValueNotifier<bool> isCheckTerms;
+  final bool state;
+  final IsCheckTermsNotifier notifier;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -249,8 +282,8 @@ class _TermsAndPrivacyPolicyText extends HookConsumerWidget {
           Checkbox(
             activeColor: AppColors.secondary,
             checkColor: AppColors.baseWhite,
-            value: isCheckTerms.value,
-            onChanged: (value) => isCheckTerms.value = value!,
+            value: state,
+            onChanged: (value) => notifier.changeState(value: value!),
           ),
           Expanded(
             child: RichText(

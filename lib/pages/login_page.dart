@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../features/auth/send_password_reset_email.dart';
@@ -15,8 +14,28 @@ import '../../widgets/gradation_background.dart';
 import '../../widgets/rounded_button.dart';
 import '../../widgets/text_form_header.dart';
 import '../../widgets/white_app_bar.dart';
+import '../features/notifiers/is_obscure_notifier.dart';
 import '../gen/assets.gen.dart';
 import 'home_page.dart';
+
+/// Provider
+
+final _emailTextEditingController = Provider<TextEditingController>(
+  (_) => TextEditingController(),
+);
+
+final _passwordTextEditingController = Provider<TextEditingController>(
+  (_) => TextEditingController(),
+);
+final _sendEmailTextEditingController = Provider<TextEditingController>(
+  (_) => TextEditingController(),
+);
+
+/// NotifierProvider
+
+final _isObscureProvider = NotifierProvider<IsObscureNotifier, bool>(
+  IsObscureNotifier.new,
+);
 
 class LogInPage extends HookConsumerWidget {
   const LogInPage({super.key});
@@ -35,9 +54,7 @@ class LogInPage extends HookConsumerWidget {
           await state.when(
             data: (_) async {
               // ローディングを非表示にする
-              ref
-                  .read(overlayLoadingProvider.notifier)
-                  .endLoading();
+              ref.read(overlayLoadingProvider.notifier).endLoading();
 
               // ログインできたらスナックバーでメッセージを表示してホーム画面に遷移する
               ref
@@ -52,18 +69,14 @@ class LogInPage extends HookConsumerWidget {
             },
             error: (e, s) async {
               // ローディングを非表示にする
-              ref
-                  .read(overlayLoadingProvider.notifier)
-                  .endLoading();
+              ref.read(overlayLoadingProvider.notifier).endLoading();
 
               // エラーが発生したらエラーダイアログを表示する
               state.showAlertDialogOnError(context);
             },
             loading: () {
               // ローディングを表示する
-              ref
-                  .read(overlayLoadingProvider.notifier)
-                  .startLoading();
+              ref.read(overlayLoadingProvider.notifier).startLoading();
             },
           );
         },
@@ -79,9 +92,7 @@ class LogInPage extends HookConsumerWidget {
           await state.when(
             data: (_) async {
               // ローディングを非表示にする
-              ref
-                  .read(overlayLoadingProvider.notifier)
-                  .endLoading();
+              ref.read(overlayLoadingProvider.notifier).endLoading();
 
               Navigator.of(context).pop();
 
@@ -92,18 +103,14 @@ class LogInPage extends HookConsumerWidget {
             },
             error: (e, s) async {
               // ローディングを非表示にする
-              ref
-                  .read(overlayLoadingProvider.notifier)
-                  .endLoading();
+              ref.read(overlayLoadingProvider.notifier).endLoading();
 
               // エラーが発生したらエラーダイアログを表示する
               state.showAlertDialogOnError(context);
             },
             loading: () {
               // ローディングを表示する
-              ref
-                  .read(overlayLoadingProvider.notifier)
-                  .startLoading();
+              ref.read(overlayLoadingProvider.notifier).startLoading();
             },
           );
         },
@@ -112,12 +119,11 @@ class LogInPage extends HookConsumerWidget {
     // Provider
     final signInstate = ref.watch(signInControllerProvider);
     final sendEmailState = ref.watch(sendPasswordResetEmailControllerProvider);
-
-    // Hooks
-    final isObscure = useState(true);
-    final emailController = useTextEditingController();
-    final passwordController = useTextEditingController();
-    final sendEmailController = useTextEditingController();
+    final isObscureState = ref.watch(_isObscureProvider);
+    final isObscureNotifier = ref.watch(_isObscureProvider.notifier);
+    final emailController = ref.watch(_emailTextEditingController);
+    final passwordController = ref.watch(_passwordTextEditingController);
+    final sendEmailController = ref.watch(_sendEmailTextEditingController);
 
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
@@ -149,7 +155,8 @@ class LogInPage extends HookConsumerWidget {
                       Measure.g_16,
                       _PasswordTextForm(
                         controller: passwordController,
-                        isObscure: isObscure,
+                        isObscureState: isObscureState,
+                        notifier: isObscureNotifier,
                       ),
                       Measure.g_32,
                       _ForgetPasswordTextButton(
@@ -309,11 +316,13 @@ class _ForgetPasswordTextButton extends StatelessWidget {
 class _PasswordTextForm extends StatelessWidget {
   const _PasswordTextForm({
     required this.controller,
-    required this.isObscure,
+    required this.isObscureState,
+    required this.notifier,
   });
 
   final TextEditingController controller;
-  final ValueNotifier<bool> isObscure;
+  final bool isObscureState;
+  final IsObscureNotifier notifier;
 
   @override
   Widget build(BuildContext context) {
@@ -324,10 +333,11 @@ class _PasswordTextForm extends StatelessWidget {
           const TextFormHeader(title: 'Password'),
           Measure.g_4,
           TextFormField(
-            obscureText: isObscure.value,
+            obscureText: isObscureState,
             controller: controller,
             decoration: AppTextFormStyles.onPassword(
-              isObscure: isObscure,
+              state: isObscureState,
+              notifier: notifier,
             ),
           ),
         ],
