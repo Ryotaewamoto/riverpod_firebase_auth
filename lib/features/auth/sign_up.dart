@@ -22,7 +22,7 @@ class SignUpController extends AutoDisposeAsyncNotifier<void> {
     // Do nothing since the return type is void.
   }
 
-  /// 新規登録する
+  /// サインアップする
   Future<void> signUp({
     required bool isCheckTerms,
     required String userName,
@@ -30,10 +30,10 @@ class SignUpController extends AutoDisposeAsyncNotifier<void> {
     required String password,
   }) async {
     final authRepository = ref.read(authRepositoryImplProvider);
-    // ログイン結果をローディング中にする
+    // サインアップをローディング中にする
     state = const AsyncLoading();
 
-    // ログイン処理を実行する
+    // サインアップを実行する
     state = await AsyncValue.guard(() async {
       try {
         final isNetworkCheck = await isNetworkConnected();
