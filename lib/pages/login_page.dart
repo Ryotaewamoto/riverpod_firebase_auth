@@ -20,20 +20,21 @@ import 'home_page.dart';
 
 /// Provider
 
-final _emailTextEditingController = Provider<TextEditingController>(
+final _emailTextEditingController = Provider.autoDispose<TextEditingController>(
   (_) => TextEditingController(),
 );
 
-final _passwordTextEditingController = Provider<TextEditingController>(
+final _passwordTextEditingController = Provider.autoDispose<TextEditingController>(
   (_) => TextEditingController(),
 );
-final _sendEmailTextEditingController = Provider<TextEditingController>(
+final _sendEmailTextEditingController = Provider.autoDispose<TextEditingController>(
   (_) => TextEditingController(),
 );
 
 /// NotifierProvider
 
-final _isObscureProvider = NotifierProvider<IsObscureNotifier, bool>(
+final _isObscureProvider =
+    NotifierProvider.autoDispose<IsObscureNotifier, bool>(
   IsObscureNotifier.new,
 );
 

@@ -1,6 +1,6 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class IsObscureNotifier extends Notifier<bool> {
+class IsObscureNotifier extends AutoDisposeNotifier<bool> {
   @override
   bool build() => true;
 

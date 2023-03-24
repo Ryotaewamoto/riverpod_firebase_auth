@@ -1,6 +1,6 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class IsCheckTermsNotifier extends Notifier<bool> {
+class IsCheckTermsNotifier extends AutoDisposeNotifier<bool> {
   @override
   bool build() => false;
 
